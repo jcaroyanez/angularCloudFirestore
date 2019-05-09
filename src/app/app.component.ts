@@ -15,8 +15,12 @@ export class AppComponent {
 
   add(){
     this.db.add("ciudades",{
-      name:"Cartagena"
+      name:"Medellin"
     }).then(response => console.log(response))
       .catch(err => console.log(err))
+  }
+
+  getAll(){
+    this.db.col$('ciudades').subscribe(listDoc => console.log(listDoc));
   }
 }

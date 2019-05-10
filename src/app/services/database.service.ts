@@ -24,10 +24,14 @@ export class DatabaseService {
     })
   }
 
-  col$<T>(ref:CollentionPredicate<T>, queryFn?):Observable<T[]>{
+  col$<T>(ref:CollentionPredicate<T>, queryFn?):Observable<any[]>{
     return this.col(ref,queryFn).snapshotChanges().pipe(
       map(docs => {
-         return docs.map(d => d.payload.doc.data()) as T[]
+         return docs.map(d => {
+           const data = d.payload.doc.data();
+           const id = d.payload.doc.id;
+           return  { id, ...data}
+         })
       })
     )
   }

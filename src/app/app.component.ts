@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { DatabaseService } from './services/database.service';
-import { defineBase } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +20,6 @@ export class AppComponent {
   }
 
   getAll(){
-    this.db.col$('ciudades').subscribe(listDoc => console.log(listDoc));
+    this.db.col$('persona').subscribe(listDoc => console.log(listDoc));
   }
 }

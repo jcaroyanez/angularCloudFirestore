@@ -22,4 +22,10 @@ export class AppComponent {
   getAll(){
     this.db.col$('persona').subscribe(listDoc => console.log(listDoc));
   }
+
+  edit(){
+    this.db.update('persona/9zpTMvyjiv9tLb2hBSpm', { cel:33333333333 } )
+    .then(() => console.log("Actualizado"))
+    .catch(err => console.log(err))
+  }
 }

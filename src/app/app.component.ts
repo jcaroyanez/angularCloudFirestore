@@ -28,4 +28,10 @@ export class AppComponent {
     .then(() => console.log("Actualizado"))
     .catch(err => console.log(err))
   }
+
+  delete(){
+    this.db.delete('ciudades/W9He020gfHLtidH3F1s8')
+    .then(() => console.log('Eliminado'))
+    .catch(err => console.log(err))
+  }
 }

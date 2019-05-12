@@ -47,4 +47,8 @@ export class DatabaseService {
     })
   }
 
+  delete<T>(ref:DocumentPredicate<T>){
+    return this.doc(ref).delete();
+  }
+
 }

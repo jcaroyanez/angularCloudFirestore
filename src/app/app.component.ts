@@ -34,4 +34,15 @@ export class AppComponent {
     .then(() => console.log('Eliminado'))
     .catch(err => console.log(err))
   }
+
+  search(){
+    this.db.col$('persona', ref => this.querys(ref,false)).subscribe(response => console.log(response));
+  }
+
+  querys(ref,value:boolean){
+    if(value)
+     return ref.where('age','>',20);
+    else
+     return ref.where('age','<',20); 
+  }
 }

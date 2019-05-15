@@ -45,4 +45,10 @@ export class AppComponent {
     else
      return ref.where('age','<',20); 
   }
+
+  colInDoc(){
+     this.db.add('persona/8TeTOacmixZ07Bky0YeD/cel',{
+       number:'111111111111111111111'
+     }).then(response => console.log(response.id));
+  }
 }

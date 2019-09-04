@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 10px;
+}
+
+.content-text{
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.content-text > input{
+    width: 70%;
+}

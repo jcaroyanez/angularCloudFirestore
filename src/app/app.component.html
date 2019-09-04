@@ -1,14 +1,23 @@
-<button (click)="add()">enviar datos</button>
-<br/><br/>
-<button (click)="getAll()">Listar datos</button>
-<br/><br/>
-<button (click)="edit()">Editar</button>
-<br/><br/>
-<button (click)="delete()">Eliminar</button>
-<br/><br/>
-<button (click)="search()">Buscar</button>
-<br/><br/>
-<button (click)="colInDoc()">Crear una colección en un documento</button>
+<div class="content-text">
+    <input type="email" class="form-control" [(ngModel)]="text">
+</div>
+<div class="container">
+<button class="btn btn-success" (click)="add()">enviar datos</button>
 
+<button class="btn btn-success" (click)="getAll()">Listar datos</button>
+
+<button class="btn btn-success" (click)="edit()">Editar</button>
+
+<button class="btn btn-success" (click)="delete()">Eliminar</button>
+
+<button class="btn btn-success" (click)="search()">Buscar</button>
+
+<button class="btn btn-success" (click)="colInDoc()">Crear una colección en un documento</button>
+</div>
+<div class="row">
+    <div class="col-md-4" *ngFor="let country of listCountry">
+        <h1>{{ country.name }}</h1>
+    </div>
+</div>
 
 

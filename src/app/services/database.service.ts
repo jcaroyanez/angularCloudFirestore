@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, combineLatest } from 'rxjs';
+import { map, flatMap } from 'rxjs/operators';
 
-type CollentionPredicate<T> = string | AngularFirestoreCollection;
-type DocumentPredicate<T> = string | AngularFirestoreDocument;
+//type  string = string | AngularFirestoreCollection;
+//type  string = string | AngularFirestoreDocument;
 
 @Injectable({
   providedIn: 'root'
@@ -15,21 +15,21 @@ export class DatabaseService {
     private afs:AngularFirestore
   ) { }
 
-  private col<T>(ref:CollentionPredicate<T>, queryFn?): AngularFirestoreCollection{
-    return typeof ref === "string"? this.afs.collection(ref,queryFn): ref;
+  private col(ref: string, queryFn?): AngularFirestoreCollection{
+    return this.afs.collection(ref,queryFn)
   }
 
-  private doc<T>(ref:DocumentPredicate<T>): AngularFirestoreDocument{
-    return typeof ref === "string"? this.afs.doc(ref) : ref;
+  private doc(ref: string): AngularFirestoreDocument{
+    return this.afs.doc(ref);
   }
 
-  add<T>(ref:CollentionPredicate<T>, data){
+  add(ref: string, data){
     return this.col(ref).add({
       ...data
     })
   }
 
-  col$<T>(ref:CollentionPredicate<T>, queryFn?):Observable<any[]>{
+  col$(ref: string, queryFn?):Observable<any[]>{
     return this.col(ref,queryFn).snapshotChanges().pipe(
       map(docs => {
          return docs.map(d => {
@@ -41,13 +41,13 @@ export class DatabaseService {
     )
   }
 
-  update<T>(ref:DocumentPredicate<T>, data){
+  update(ref: string, data){
     return this.doc(ref).update({
       ...data
     })
   }
 
-  delete<T>(ref:DocumentPredicate<T>){
+  delete<T>(ref: string){
     return this.doc(ref).delete();
   }
 

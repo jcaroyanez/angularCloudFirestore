@@ -3,9 +3,6 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable, combineLatest } from 'rxjs';
 import { map, flatMap } from 'rxjs/operators';
 
-//type  string = string | AngularFirestoreCollection;
-//type  string = string | AngularFirestoreDocument;
-
 @Injectable({
   providedIn: 'root'
 })
